@@ -5,7 +5,8 @@ import javax.swing.JFrame;
 public class Fenetre extends JFrame {
 
 
-	public Fenetre() {
+	private final Scene scene;
+	public Fenetre(Scene scene) {
 		
 		this.setTitle("Pylatak");
 		this.setSize(1200, 750);
@@ -13,8 +14,8 @@ public class Fenetre extends JFrame {
 		//this.setAlwaysOnTop(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setResizable(false);
-
-		Scene scene = new Scene();
+		this.scene = scene;
+		
 		this.setContentPane(scene);
 
 		this.setVisible(true);

@@ -6,9 +6,8 @@ public class PetitePlateformes extends Structures{
 
 	
 	public PetitePlateformes(String nom , int x ,int y){
-		super(x, y, 267, 12);
+		super(x, y, 267, 12,new ImageIcon(getClass().getResource("/" + nom + ".png")));
 		
-		super.ico = new ImageIcon(getClass().getResource("/" + nom + ".png"));
-		super.images = ico.getImage();
+
 	}
 }

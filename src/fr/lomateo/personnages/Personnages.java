@@ -3,13 +3,12 @@ package fr.lomateo.personnages;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 
-import fr.lomateo.main.Fenetre;
 import fr.lomateo.main.Scene;
 import fr.lomateo.structures.Structures;
 
 public class Personnages {
 
-	Scene scene;
+	private final Scene scene;
 	// variable
 	private int largeur, hauteur;
 	private int x, y;

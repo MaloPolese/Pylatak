@@ -9,10 +9,9 @@ public class Mur extends Structures{
 	
 	public Mur(String nom , int x , int y){
 		
-		super(x, y , 37 , 750);
+		super(x, y , 37 , 750,new ImageIcon(getClass().getResource("/" + nom + ".png")));
 		
-		super.ico = new ImageIcon(getClass().getResource("/" + nom + ".png"));
-		super.images = ico.getImage();
+
 	}
 
 }

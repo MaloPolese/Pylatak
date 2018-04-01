@@ -76,9 +76,6 @@ public class Scene extends JPanel {
 		this.structures.add(this.murGauche);
 		this.structures.add(this.murDroite);
 
-		// Démarre un chrono pour rafraichir l’écran
-		Chrono chronoEcrant = new Chrono(this);
-		chronoEcrant.start();
 
 	}
 

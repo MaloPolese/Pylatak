@@ -9,20 +9,14 @@ public class Structures {
 	private int x, y ;
 	private int largeur , hauteur;
 	
-	protected ImageIcon ico;
 	protected Image images;
 	
-	public Structures() {
-		this.x = 0;
-		this.y = 0;
-		this.largeur = 0;
-		this.hauteur = 0;
-	}
-	public Structures(int x, int y , int largeur , int hauteur) {
+	public Structures(int x, int y , int largeur , int hauteur, ImageIcon ico) {
 		this.x = x;
 		this.y = y;
 		this.largeur = largeur;
 		this.hauteur = hauteur;
+		this.images = ico.getImage();
 	}
 
 	public int getX() {

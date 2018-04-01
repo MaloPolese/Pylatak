@@ -8,7 +8,12 @@ public class JeuStart {
 	public static void main(String[] args) {
 		
 		//création de l'objet Fenetre
-		Fenetre fenetre  = new Fenetre();
+		
+		Scene scene = new Scene();
+		Fenetre fenetre  = new Fenetre(scene);
+		Chrono chrono = new Chrono(scene);
+		chrono.start();
+		
 	}
 
 }
