@@ -25,6 +25,7 @@ public class Scene extends JPanel {
 	// Personnages
 	public Joueur joueur1;
 	public Joueur joueur2;
+	
 	// variable de déplacement x des joueurs
 	private int dxJ1;
 	private int dxJ2;
@@ -127,7 +128,7 @@ public class Scene extends JPanel {
 
 		// affichage des structures
 		for (Structures structures : structures) {
-			g2.drawImage(structures.getImagesStructures(), structures.getX(), structures.getY(), null);
+			structures.paint(g2);
 		}
 
 	}
