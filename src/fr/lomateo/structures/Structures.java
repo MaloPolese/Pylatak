@@ -9,8 +9,8 @@ public class Structures {
 	private int x, y ;
 	private int largeur , hauteur;
 	
-	protected ImageIcon icoStructures;
-	protected Image imagesStructures;
+	protected ImageIcon ico;
+	protected Image images;
 	
 	public Structures() {
 		this.x = 0;
@@ -57,7 +57,7 @@ public class Structures {
 		this.hauteur = hauteur;
 	}
 	public Image getImagesStructures() {
-		return imagesStructures;
+		return images;
 	}
 	
 	

@@ -8,8 +8,7 @@ import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
-import fr.lomateo.personnages.Joueur1;
-import fr.lomateo.personnages.Joueur2;
+import fr.lomateo.personnages.Joueur;
 import fr.lomateo.structures.GrandePlateformes;
 import fr.lomateo.structures.Mur;
 import fr.lomateo.structures.PetitePlateformes;
@@ -18,34 +17,33 @@ import fr.lomateo.structures.Structures;
 public class Scene extends JPanel {
 
 	private static final long serialVersionUID = -1578970639764868768L;
-	
+
 	// backGround images
-	private ImageIcon icoFond;
-	private Image imgFond;
+	private final ImageIcon icoFond;
+	private final Image imgFond;
 
 	// Personnages
-	public Joueur1 joueur1;
-	public Joueur2 joueur2;
+	public Joueur joueur1;
+	public Joueur joueur2;
 	// variable de déplacement x des joueurs
 	private int dxJ1;
 	private int dxJ2;
 
 	// structures
-	public PetitePlateformes petitePlateformeDroite;
-	public PetitePlateformes petitePlateformeGauche;
-	public GrandePlateformes grandePlateforme1;
-	public Mur murGauche;
-	public Mur murDroite;
+	private PetitePlateformes petitePlateformeDroite;
+	private PetitePlateformes petitePlateformeGauche;
+	private GrandePlateformes grandePlateforme1;
+	private Mur murGauche;
+	private Mur murDroite;
 
 	// position du sol & du plafond
 	private int ysol;
 	private int hauteurPlafond;
 
 	// tableau pour stocker les structures
-	public ArrayList<Structures> tableauStructures;
+	private ArrayList<Structures> structures;
 
 	public Scene() {
-		super();
 
 		this.ysol = 692;// 592
 		this.hauteurPlafond = 0;
@@ -54,13 +52,13 @@ public class Scene extends JPanel {
 
 		this.setFocusable(true);
 		this.requestFocusInWindow();
-		this.addKeyListener(new Controls());
+		this.addKeyListener(new Controls(this));
 
 		icoFond = new ImageIcon(getClass().getResource("/BackGroundBeta.png"));
 		imgFond = icoFond.getImage();
 
-		joueur1 = new Joueur1(70, 592);
-		joueur2 = new Joueur2(1045, 592);
+		joueur1 = new Joueur(70, 592, this);
+		joueur2 = new Joueur(1045, 592, this);
 		joueur1.setVersDroite(true);
 		joueur2.setVersDroite(false);
 
@@ -70,16 +68,16 @@ public class Scene extends JPanel {
 		murGauche = new Mur("murDroite", 0, 0);
 		murDroite = new Mur("murGauche", 1167, 0);
 
-		tableauStructures = new ArrayList<Structures>();
+		structures = new ArrayList<Structures>();
 
-		this.tableauStructures.add(this.petitePlateformeDroite);
-		this.tableauStructures.add(this.petitePlateformeGauche);
-		this.tableauStructures.add(this.grandePlateforme1);
-		this.tableauStructures.add(this.murGauche);
-		this.tableauStructures.add(this.murDroite);
+		this.structures.add(this.petitePlateformeDroite);
+		this.structures.add(this.petitePlateformeGauche);
+		this.structures.add(this.grandePlateforme1);
+		this.structures.add(this.murGauche);
+		this.structures.add(this.murDroite);
 
 		// Démarre un chrono pour rafraichir l’écran
-		Chrono chronoEcrant = new Chrono();
+		Chrono chronoEcrant = new Chrono(this);
 		chronoEcrant.start();
 
 	}
@@ -98,13 +96,13 @@ public class Scene extends JPanel {
 		Graphics2D g2 = (Graphics2D) g;
 
 		// Boucle parcourant le tableau de structures
-		for (int i = 0; i < tableauStructures.size(); i++) {
+		for (Structures structures : structures) {
 			// detection des contacts
-			if (this.joueur1.proche(tableauStructures.get(i))) {
-				this.joueur1.contact(this.tableauStructures.get(i));
+			if (this.joueur1.proche(structures)) {
+				this.joueur1.contact(structures);
 			}
-			if (this.joueur2.proche(tableauStructures.get(i))) {
-				this.joueur2.contact(this.tableauStructures.get(i));
+			if (this.joueur2.proche(structures)) {
+				this.joueur2.contact(structures);
 			}
 		}
 		// deplacements des Joueurs
@@ -130,11 +128,9 @@ public class Scene extends JPanel {
 			g2.drawImage(this.joueur2.marche("personnageJ2", 30), this.joueur2.getX(), this.joueur2.getY(), null);
 		}
 
-		
-		//affichage des structures
-		for (int i = 0; i < tableauStructures.size(); i++) {
-			g2.drawImage(this.tableauStructures.get(i).getImagesStructures(), this.tableauStructures.get(i).getX(),
-					this.tableauStructures.get(i).getY(), null);
+		// affichage des structures
+		for (Structures structures : structures) {
+			g2.drawImage(structures.getImagesStructures(), structures.getX(), structures.getY(), null);
 		}
 
 	}

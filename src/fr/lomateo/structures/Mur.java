@@ -11,8 +11,8 @@ public class Mur extends Structures{
 		
 		super(x, y , 37 , 750);
 		
-		super.icoStructures = new ImageIcon(getClass().getResource("/" + nom + ".png"));
-		super.imagesStructures = icoStructures.getImage();
+		super.ico = new ImageIcon(getClass().getResource("/" + nom + ".png"));
+		super.images = ico.getImage();
 	}
 
 }

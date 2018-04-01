@@ -4,17 +4,19 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 
 import fr.lomateo.main.Fenetre;
+import fr.lomateo.main.Scene;
 import fr.lomateo.structures.Structures;
 
 public class Personnages {
 
+	Scene scene;
 	// variable
 	private int largeur, hauteur;
 	private int x, y;
 	private boolean marche, VersDroite, saut, frappe;
 	public int compteur, compteurSaut, compteurFrape;
 
-	public Personnages(int x, int y, int largeur, int hauteur) {
+	public Personnages(int x, int y, int largeur, int hauteur, Scene scene) {
 		this.largeur = largeur;
 		this.hauteur = hauteur;
 		this.x = x;
@@ -24,6 +26,7 @@ public class Personnages {
 		this.saut = false;
 		this.compteur = 0;
 		this.compteurSaut = 0;
+		this.scene = scene;
 	}
 	
 	//methodes des personnages
@@ -75,7 +78,7 @@ public class Personnages {
 		this.compteurSaut++;
 		// Montée
 		if (this.compteurSaut <= 70) {
-			if (this.getY() > Fenetre.scene.getHauteurPlafond()) {
+			if (this.getY() > this.scene.getHauteurPlafond()) {
 				this.setY(this.getY() - 4);
 			} else {
 				this.compteurSaut = 71;
@@ -86,7 +89,7 @@ public class Personnages {
 				str = "/" + nom + "SautGauche.png";
 			}
 			// dessante
-		} else if (this.getY() + this.getHauteur() < Fenetre.scene.getYsol()) {
+		} else if (this.getY() + this.getHauteur() < this.scene.getYsol()) {
 			this.setY(this.getY() + 3);
 
 			if (this.VersDroite == true) {
