@@ -14,6 +14,7 @@ public class Personnages {
 	private int x, y;
 	private boolean marche, VersDroite, saut, frappe;
 	public int compteur, compteurSaut, compteurFrape;
+	private int dxJ;
 
 	public Personnages(int x, int y, int largeur, int hauteur, Scene scene) {
 		this.largeur = largeur;
@@ -26,6 +27,7 @@ public class Personnages {
 		this.compteur = 0;
 		this.compteurSaut = 0;
 		this.scene = scene;
+		this.dxJ = 0;
 	}
 	
 	//methodes des personnages
@@ -247,5 +249,14 @@ public class Personnages {
 	public void setFrappe(boolean frappe) {
 		this.frappe = frappe;
 	}
+
+	public int getDxJ() {
+		return dxJ;
+	}
+
+	public void setDxJ(int dxJ) {
+		this.dxJ = dxJ;
+	}
+	
 
 }

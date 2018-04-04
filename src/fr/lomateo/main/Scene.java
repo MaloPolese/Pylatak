@@ -26,16 +26,15 @@ public class Scene extends JPanel {
 	public Joueur joueur1;
 	public Joueur joueur2;
 	
-	// variable de déplacement x des joueurs
-	private int dxJ1;
-	private int dxJ2;
+	public Controls2 ControlJ1;
+	public Controls2 ControlJ2;
 
 	// structures
-	private PetitePlateformes petitePlateformeDroite;
-	private PetitePlateformes petitePlateformeGauche;
-	private GrandePlateformes grandePlateforme1;
-	private Mur murGauche;
-	private Mur murDroite;
+	private final PetitePlateformes petitePlateformeDroite;
+	private final PetitePlateformes petitePlateformeGauche;
+	private final GrandePlateformes grandePlateforme1;
+	private final Mur murGauche;
+	private final Mur murDroite;
 
 	// position du sol & du plafond
 	private int ysol;
@@ -43,25 +42,27 @@ public class Scene extends JPanel {
 
 	// tableau pour stocker les structures
 	private ArrayList<Structures> structures;
+	private ArrayList<Joueur> joueurs;
 
 	public Scene() {
 
 		this.ysol = 692;// 592
 		this.hauteurPlafond = 0;
-		this.dxJ1 = 0;
-		this.dxJ2 = 0;
-
-		this.setFocusable(true);
-		this.requestFocusInWindow();
-		this.addKeyListener(new Controls(this));
-
-		icoFond = new ImageIcon(getClass().getResource("/BackGroundBeta.png"));
-		imgFond = icoFond.getImage();
 
 		joueur1 = new Joueur(70, 592, this);
 		joueur2 = new Joueur(1045, 592, this);
 		joueur1.setVersDroite(true);
 		joueur2.setVersDroite(false);
+		
+		this.setFocusable(true);
+		this.requestFocusInWindow();
+		ControlJ1 = new Controls2(joueur1, 0x5A, 0x51, 0x44, 0x45); //(joueur , saut , gauche , droite , coup)
+		ControlJ2 = new Controls2(joueur2, 0x26, 0x25, 0x27, 0x61); //(joueur , saut , gauche , droite , coup)
+		this.addKeyListener(ControlJ1);
+		this.addKeyListener(ControlJ2);
+
+		icoFond = new ImageIcon(getClass().getResource("/BackGroundBeta.png"));
+		imgFond = icoFond.getImage();
 
 		petitePlateformeDroite = new PetitePlateformes("PetitePlateformeDroite", 899, 320);
 		petitePlateformeGauche = new PetitePlateformes("PetitePlateformeGauche", 31, 320);
@@ -70,21 +71,23 @@ public class Scene extends JPanel {
 		murDroite = new Mur("murGauche", 1167, 0);
 
 		structures = new ArrayList<Structures>();
-
 		this.structures.add(this.petitePlateformeDroite);
 		this.structures.add(this.petitePlateformeGauche);
 		this.structures.add(this.grandePlateforme1);
 		this.structures.add(this.murGauche);
 		this.structures.add(this.murDroite);
 
+		joueurs = new ArrayList<Joueur>();
+		this.joueurs.add(this.joueur1);
+		this.joueurs.add(this.joueur2);
 
 	}
 
 	// methode de deplacement des joueurs
 	public void deplacementJ() {
 
-		this.joueur1.setX(this.joueur1.getX() + this.dxJ1);
-		this.joueur2.setX(this.joueur2.getX() + this.dxJ2);
+		this.joueur1.setX(this.joueur1.getX() + this.joueur1.getDxJ());
+		this.joueur2.setX(this.joueur2.getX() + this.joueur2.getDxJ());
 
 	}
 
@@ -94,13 +97,12 @@ public class Scene extends JPanel {
 		Graphics2D g2 = (Graphics2D) g;
 
 		// Boucle parcourant le tableau de structures
-		for (Structures structures : structures) {
+		for (Structures structures : this.structures) {
 			// detection des contacts
-			if (this.joueur1.proche(structures)) {
-				this.joueur1.contact(structures);
-			}
-			if (this.joueur2.proche(structures)) {
-				this.joueur2.contact(structures);
+			for(Joueur joueurs : this.joueurs){
+				if(joueurs.proche(structures)){
+					joueurs.contact(structures);
+				}
 			}
 		}
 		// deplacements des Joueurs
@@ -110,22 +112,16 @@ public class Scene extends JPanel {
 		g2.drawImage(imgFond, 0, 0, this.getWidth(), this.getHeight(), this);
 
 		// affichage des Joueurs
-		if (this.joueur1.isSaut()) {
-			g2.drawImage(this.joueur1.saut("personnageJ1"), this.joueur1.getX(), this.joueur1.getY(), null);
-		} else if (this.joueur1.isFrappe() && !this.joueur1.isMarche()) {
-			g2.drawImage(this.joueur1.coup("personnageJ1"), this.joueur1.getX(), this.joueur1.getY(), null);
-		} else {
-			g2.drawImage(this.joueur1.marche("personnageJ1", 30), this.joueur1.getX(), this.joueur1.getY(), null);
+		for(Joueur joueurs : this.joueurs){
+			if(joueurs.isSaut()){
+				g2.drawImage(joueurs.saut("personnageJ1"), joueurs.getX(), joueurs.getY(), null);
+			}else if (joueurs.isFrappe() && !this.joueur1.isMarche()) {
+				g2.drawImage(joueurs.coup("personnageJ1"), joueurs.getX(), joueurs.getY(), null);
+			} else {
+				g2.drawImage(joueurs.marche("personnageJ1", 30), joueurs.getX(), joueurs.getY(), null);
+			}
 		}
-
-		if (this.joueur2.isSaut()) {
-			g2.drawImage(this.joueur2.saut("personnageJ2"), this.joueur2.getX(), this.joueur2.getY(), null);
-		} else if (this.joueur2.isFrappe() && !this.joueur2.isMarche()) {
-			g2.drawImage(this.joueur2.coup("personnageJ2"), this.joueur2.getX(), this.joueur2.getY(), null);
-		} else {
-			g2.drawImage(this.joueur2.marche("personnageJ2", 30), this.joueur2.getX(), this.joueur2.getY(), null);
-		}
-
+		
 		// affichage des structures
 		for (Structures structures : structures) {
 			structures.paint(g2);
@@ -134,22 +130,6 @@ public class Scene extends JPanel {
 	}
 
 	// ****Getter && Setter******
-
-	public void setDxJ1(int dx) {
-		this.dxJ1 = dx;
-	}
-
-	public int getDxJ1() {
-		return this.dxJ1;
-	}
-
-	public void setDxJ2(int dx) {
-		this.dxJ2 = dx;
-	}
-
-	public int getDxJ2() {
-		return this.dxJ2;
-	}
 
 	public int getYsol() {
 		return ysol;

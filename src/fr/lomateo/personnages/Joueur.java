@@ -11,8 +11,8 @@ import fr.lomateo.structures.Structures;
 public class Joueur extends Personnages {
 
 	//image J2
-	private ImageIcon icoPersonnage2;
-	private Image Imagepersonnage2;
+	private final ImageIcon icoPersonnage2;
+	private final Image Imagepersonnage2;
     private final Scene scene;
 	
 	public Joueur(int x , int y , Scene scene){
@@ -34,7 +34,7 @@ public class Joueur extends Personnages {
 		if ((super.contactAvant(structure) == true && this.isVersDroite() == true)
 				|| (super.contactArriere(structure) == true && this.isVersDroite() == false)) {
 
-			this.scene.setDxJ2(0);
+			setDxJ(0);
 			this.setMarche(false);
 		}
 
