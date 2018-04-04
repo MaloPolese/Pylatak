@@ -28,7 +28,6 @@ public class Structures {
 
 	public void paint(Graphics2D g2) {
 		g2.drawImage(this.images, this.x, this.y, null);
-
 	}
 
 	public int getX() {

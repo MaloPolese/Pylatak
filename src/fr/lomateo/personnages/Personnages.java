@@ -1,5 +1,6 @@
 package fr.lomateo.personnages;
 
+import java.awt.Graphics2D;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 
@@ -200,6 +201,15 @@ public class Personnages {
 			return true;
 		}
 		return false;
+	}
+	public void paint(Graphics2D g2) {
+		if(this.isSaut()){
+			g2.drawImage(this.saut("personnageJ1"), this.getX(), this.getY(), null);
+		}else if (this.isFrappe() && !this.isMarche()) {
+			g2.drawImage(this.coup("personnageJ1"), this.getX(), this.getY(), null);
+		} else {
+			g2.drawImage(this.marche("personnageJ1", 30), this.getX(), this.getY(), null);
+		}
 	}
 
 	// ****Getter && Setter******

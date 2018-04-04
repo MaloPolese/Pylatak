@@ -100,9 +100,9 @@ public class Scene extends JPanel {
 		for (Structures structures : this.structures) {
 			// detection des contacts
 			for(Joueur joueurs : this.joueurs){
-				if(joueurs.proche(structures)){
+				//if(joueurs.proche(structures)){
 					joueurs.contact(structures);
-				}
+				//}
 			}
 		}
 		// deplacements des Joueurs
@@ -113,13 +113,7 @@ public class Scene extends JPanel {
 
 		// affichage des Joueurs
 		for(Joueur joueurs : this.joueurs){
-			if(joueurs.isSaut()){
-				g2.drawImage(joueurs.saut("personnageJ1"), joueurs.getX(), joueurs.getY(), null);
-			}else if (joueurs.isFrappe() && !this.joueur1.isMarche()) {
-				g2.drawImage(joueurs.coup("personnageJ1"), joueurs.getX(), joueurs.getY(), null);
-			} else {
-				g2.drawImage(joueurs.marche("personnageJ1", 30), joueurs.getX(), joueurs.getY(), null);
-			}
+			joueurs.paint(g2);
 		}
 		
 		// affichage des structures
