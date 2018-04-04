@@ -26,8 +26,8 @@ public class Scene extends JPanel {
 	public Joueur joueur1;
 	public Joueur joueur2;
 	
-	public Controls2 ControlJ1;
-	public Controls2 ControlJ2;
+	public Controls ControlJ1;
+	public Controls ControlJ2;
 
 	// structures
 	private final PetitePlateformes petitePlateformeDroite;
@@ -56,8 +56,8 @@ public class Scene extends JPanel {
 		
 		this.setFocusable(true);
 		this.requestFocusInWindow();
-		ControlJ1 = new Controls2(joueur1, 0x5A, 0x51, 0x44, 0x45); //(joueur , saut , gauche , droite , coup)
-		ControlJ2 = new Controls2(joueur2, 0x26, 0x25, 0x27, 0x61); //(joueur , saut , gauche , droite , coup)
+		ControlJ1 = new Controls(joueur1, 0x5A, 0x51, 0x44, 0x45); //(joueur , saut , gauche , droite , coup)
+		ControlJ2 = new Controls(joueur2, 0x26, 0x25, 0x27, 0x61); //(joueur , saut , gauche , droite , coup)
 		this.addKeyListener(ControlJ1);
 		this.addKeyListener(ControlJ2);
 
@@ -126,7 +126,6 @@ public class Scene extends JPanel {
 		for (Structures structures : structures) {
 			structures.paint(g2);
 		}
-
 	}
 
 	// ****Getter && Setter******

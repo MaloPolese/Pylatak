@@ -1,9 +1,5 @@
 package fr.lomateo.personnages;
 
-import java.awt.Image;
-
-import javax.swing.ImageIcon;
-
 import fr.lomateo.main.Scene;
 import fr.lomateo.structures.Structures;
 
@@ -11,22 +7,12 @@ import fr.lomateo.structures.Structures;
 public class Joueur extends Personnages {
 
 	//image J2
-	private final ImageIcon icoPersonnage2;
-	private final Image Imagepersonnage2;
     private final Scene scene;
 	
 	public Joueur(int x , int y , Scene scene){
 		super(x , y , 79 ,100, scene);
 		
-		icoPersonnage2 = new ImageIcon(getClass().getResource("/personnageJ2ArretGauche.png"));
-		this.Imagepersonnage2 = this.icoPersonnage2.getImage();
-		
 		this.scene = scene;
-	}
-	
-	//Getter
-	public Image getImageJ2(){
-		return Imagepersonnage2;
 	}
 	
 	//methode contact
@@ -37,7 +23,6 @@ public class Joueur extends Personnages {
 			setDxJ(0);
 			this.setMarche(false);
 		}
-
 		if (super.contactDessous(structure) == true && this.isSaut() == true) {
 			this.scene.setYsol(10);
 			System.out.println(this.scene.getYsol());
@@ -47,7 +32,6 @@ public class Joueur extends Personnages {
 				this.setY(592);
 			}
 		}
-		
 		if(super.contactDessus(structure) == true){
 			this.scene.setHauteurPlafond(structure.getY() + structure.getHauteur());
 			System.out.println(this.scene.getHauteurPlafond());

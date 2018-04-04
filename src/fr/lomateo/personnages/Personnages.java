@@ -15,8 +15,15 @@ public class Personnages {
 	private boolean marche, VersDroite, saut, frappe;
 	public int compteur, compteurSaut, compteurFrape;
 	private int dxJ;
+	
+	protected ImageIcon ico;
+	protected Image image;
 
 	public Personnages(int x, int y, int largeur, int hauteur, Scene scene) {
+		this(x, y, largeur, hauteur, scene, new ImageIcon(Personnages.class.getResource("/personnageJ1ArretGauche.png")));
+	}
+	
+	public Personnages(int x, int y, int largeur, int hauteur, Scene scene, ImageIcon ico) {
 		this.largeur = largeur;
 		this.hauteur = hauteur;
 		this.x = x;
@@ -28,6 +35,9 @@ public class Personnages {
 		this.compteurSaut = 0;
 		this.scene = scene;
 		this.dxJ = 0;
+		
+		this.ico = ico;
+		this.image = ico.getImage();
 	}
 	
 	//methodes des personnages
@@ -249,7 +259,6 @@ public class Personnages {
 	public void setFrappe(boolean frappe) {
 		this.frappe = frappe;
 	}
-
 	public int getDxJ() {
 		return dxJ;
 	}
