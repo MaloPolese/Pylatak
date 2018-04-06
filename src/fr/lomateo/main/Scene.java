@@ -95,16 +95,7 @@ public class Scene extends JPanel {
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		Graphics2D g2 = (Graphics2D) g;
-
-		// Boucle parcourant le tableau de structures
-		for (Structures structures : this.structures) {
-			// detection des contacts
-			for(Joueur joueurs : this.joueurs){
-				//if(joueurs.proche(structures)){
-					joueurs.contact(structures);
-				//}
-			}
-		}
+		
 		// deplacements des Joueurs
 		this.deplacementJ();
 
@@ -117,7 +108,7 @@ public class Scene extends JPanel {
 		}
 		
 		// affichage des structures
-		for (Structures structures : structures) {
+		for (Structures structures : this.structures) {
 			structures.paint(g2);
 		}
 	}

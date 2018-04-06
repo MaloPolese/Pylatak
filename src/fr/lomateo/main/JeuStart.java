@@ -7,7 +7,7 @@ public class JeuStart {
 
 	public static void main(String[] args) {
 		
-		//création de l'objet Fenetre
+		//création de la Fenetre
 		
 		Scene scene = new Scene();
 		Fenetre fenetre  = new Fenetre(scene);

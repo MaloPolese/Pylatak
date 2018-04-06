@@ -15,28 +15,33 @@ public class Joueur extends Personnages {
 		this.scene = scene;
 	}
 	
+	
 	//methode contact
-	public void contact(Structures structure) {
-		if ((super.contactAvant(structure) == true && this.isVersDroite() == true)
-				|| (super.contactArriere(structure) == true && this.isVersDroite() == false)) {
+	/*
+	 * public void contact(Structures structure) {
+		if ((super.contactAvant(structure) && this.isVersDroite())
+				|| (super.contactArriere(structure) && this.isVersDroite())) {
 
 			setDxJ(0);
 			this.setMarche(false);
 		}
-		if (super.contactDessous(structure) == true && this.isSaut() == true) {
+		if (super.contactDessous(structure)&& this.isSaut()) {
 			this.scene.setYsol(10);
 			System.out.println(this.scene.getYsol());
-		} else if (super.contactDessous(structure) == false) {
+		} else if (super.contactDessous(structure)) {
 			this.scene.setYsol(592);
-			if (this.isSaut() == false) {
+			if (this.isSaut()) {
 				this.setY(592);
 			}
 		}
-		if(super.contactDessus(structure) == true){
+		if(super.contactDessus(structure)){
 			this.scene.setHauteurPlafond(structure.getY() + structure.getHauteur());
 			System.out.println(this.scene.getHauteurPlafond());
-		}else if(super.contactDessus(structure) == false && this.isSaut() == false){
+		}else if(super.contactDessus(structure) && this.isSaut()){
 			this.scene.setHauteurPlafond(0);
 		}
 	}
+	*
+	*/
+	
 }
