@@ -14,6 +14,7 @@ public class JeuStart {
 		Chrono chrono = new Chrono(scene);
 		chrono.start();
 		
+		
 	}
 
 }
