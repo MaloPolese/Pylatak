@@ -10,6 +10,7 @@ public class Structures {
 	private int x, y;
 	private int largeur, hauteur;
 
+	//images des structures
 	protected ImageIcon ico;
 	protected Image images;
 

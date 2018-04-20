@@ -7,14 +7,14 @@ public class Chrono extends Thread{
 	public Chrono(Scene scene){
 		this.scene = scene;
 	}
-	private final int pause = 4; //temps de draw ecrant
+
 	@Override
 	public void run() {
 		
 		while(true){
-			this.scene.repaint();//Rafraichissement des images
+			this.scene.repaint();//repaint de la scene
 			try {
-				Thread.sleep(pause);//pause de 4 
+				Thread.sleep(4); //temps de rafraichissement de l'écrant
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}

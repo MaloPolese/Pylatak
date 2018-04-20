@@ -22,7 +22,10 @@ public class Controls implements KeyListener {
 	}
 
 	@Override
-	public void keyPressed(KeyEvent e) {
+	
+	//Quand un touche du clavier est utilisé
+	public void keyPressed(KeyEvent e) { 
+		
 		if (e.getKeyCode() == this.saut) {
 			this.joueur.setSaut(true);
 		} else if (e.getKeyCode() == this.gauche) {
@@ -33,13 +36,13 @@ public class Controls implements KeyListener {
 			this.joueur.setMarche(true);
 			this.joueur.setVersDroite(true);
 			this.joueur.setDxJ(1);
-			// attack
 		} else if (e.getKeyCode() == this.coup) {
 			this.joueur.setFrappe(true);
 		}
 		
 	}
 	@Override
+	//Quand un touche du clavier est relaché
 	public void keyReleased(KeyEvent e) {
 		
 		if (e.getKeyCode() == this.droite) {

@@ -8,9 +8,10 @@ public class JeuStart {
 	public static void main(String[] args) {
 		
 		//création de la Fenetre
-		
 		Scene scene = new Scene();
 		Fenetre fenetre  = new Fenetre(scene);
+		
+		//rafraichissement de l'écran
 		Chrono chrono = new Chrono(scene);
 		chrono.start();
 		

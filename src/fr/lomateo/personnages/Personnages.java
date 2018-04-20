@@ -10,7 +10,8 @@ import fr.lomateo.structures.Structures;
 public class Personnages {
 
 	private final Scene scene;
-	// variable
+	
+	// variable des personnages
 	private int largeur;
 	protected int hauteur;
 	protected int x;
@@ -74,7 +75,7 @@ public class Personnages {
 
 		protected boolean contactDessous(Structures structure) {
 			if ((this.x + this.largeur < structure.getX() + 5) || (this.x > structure.getX() + structure.getLargeur() - 5)
-					|| (this.y + this.hauteur < structure.getY()) || (this.y + this.hauteur > structure.getY() + 5)) {
+					|| (this.y + this.hauteur < structure.getY() - 10) || (this.y + this.hauteur > structure.getY() + 5)) {
 				return false;
 			}
 			return true;

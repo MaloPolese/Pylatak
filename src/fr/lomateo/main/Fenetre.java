@@ -6,6 +6,7 @@ public class Fenetre extends JFrame {
 
 
 	private final Scene scene;
+	
 	public Fenetre(Scene scene) {
 		
 		this.setTitle("Pylatak");
