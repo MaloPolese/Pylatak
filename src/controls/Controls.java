@@ -1,19 +1,17 @@
-package fr.lomateo.main;
+package controls;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-import fr.lomateo.personnages.Joueur;
-
 public class Controls implements KeyListener {
 	
-	private final Joueur joueur;
+	private final ControllablePersonnage joueur;
 	private final int gauche;
 	private final int droite;
 	private final int saut;
 	private final int coup;
 	
-	public Controls(Joueur joueur, int saut, int gauche, int droite , int coup) {
+	public Controls(ControllablePersonnage joueur, int saut, int gauche, int droite , int coup) {
 		this.joueur = joueur;
 		this.gauche = gauche;
 		this.droite = droite;
@@ -21,9 +19,8 @@ public class Controls implements KeyListener {
 		this.coup = coup;
 	}
 
+	//Quand une touche du clavier est utilisé
 	@Override
-	
-	//Quand un touche du clavier est utilisé
 	public void keyPressed(KeyEvent e) { 
 		
 		if (e.getKeyCode() == this.saut) {
@@ -41,8 +38,9 @@ public class Controls implements KeyListener {
 		}
 		
 	}
+	
+	//Quand une touche du clavier est relaché
 	@Override
-	//Quand un touche du clavier est relaché
 	public void keyReleased(KeyEvent e) {
 		
 		if (e.getKeyCode() == this.droite) {
