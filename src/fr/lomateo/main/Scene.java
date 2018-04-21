@@ -1,19 +1,17 @@
 package fr.lomateo.main;
 
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Image;
-import java.util.ArrayList;
-
-import javax.swing.ImageIcon;
-import javax.swing.JComponent;
-import javax.swing.JPanel;
-
-import fr.lomateo.personnages.Joueur;
+import fr.lomateo.controls.Controls;
+import fr.lomateo.personnages.DefaultJoueur;
 import fr.lomateo.structures.GrandePlateformes;
 import fr.lomateo.structures.Mur;
 import fr.lomateo.structures.PetitePlateformes;
 import fr.lomateo.structures.Structures;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Image;
+import java.util.ArrayList;
+import javax.swing.ImageIcon;
+import javax.swing.JPanel;
 
 public class Scene extends JPanel {
 
@@ -22,14 +20,6 @@ public class Scene extends JPanel {
 	// backGround images
 	private final ImageIcon icoFond;
 	private final Image imgFond;
-
-	// Personnages
-	public Joueur joueur1;
-	public Joueur joueur2;
-
-	//Control
-	public Controls ControlJ1;
-	public Controls ControlJ2;
 
 	// structures
 	private final PetitePlateformes petitePlateformeDroite;
@@ -52,18 +42,16 @@ public class Scene extends JPanel {
 		this.hauteurPlafond = 0;
 
 		//Création des joueurs
-		joueur1 = new Joueur(70, 592, "J1", this);
-		joueur2 = new Joueur(1045, 592, "J2", this);// 1045
-		joueur1.setVersDroite(true);
-		joueur2.setVersDroite(false);
+		DefaultJoueur joueur1 = new DefaultJoueur(this, 70, 592, "J1", true);
+		DefaultJoueur joueur2 = new DefaultJoueur(this, 1045, 592, "J2", false);// 1045
 
 		//Création des controls
 		this.setFocusable(true);
 		this.requestFocusInWindow();
-		ControlJ1 = new Controls(joueur1, 0x5A, 0x51, 0x44, 0x45); // (joueur , saut , gauche , droite , coup)
-		ControlJ2 = new Controls(joueur2, 0x26, 0x25, 0x27, 0x61); // (joueur , saut , gauche , droite , coup)
-		this.addKeyListener(ControlJ1);
-		this.addKeyListener(ControlJ2);
+
+		// (joueur , saut , gauche , droite , coup)
+		this.addKeyListener(new Controls(joueur1, 0x5A, 0x51, 0x44, 0x45));
+		this.addKeyListener(new Controls(joueur2, 0x26, 0x25, 0x27, 0x61));
 
 		//Création du fond
 		icoFond = new ImageIcon(getClass().getResource("/BackGroundBeta.png"));
@@ -75,7 +63,6 @@ public class Scene extends JPanel {
 		grandePlateforme1 = new GrandePlateformes("GrandePlateforme1", 370, 500);// 500
 		murGauche = new Mur("murDroite", 0, 0);
 		murDroite = new Mur("murGauche", 1167, 0);
-	
 		
 		//ArrayList
 		structures = new ArrayList<Structures>();
@@ -101,7 +88,7 @@ public class Scene extends JPanel {
 
 		// affichage des Joueurs
 		for(Joueur joueur : this.joueurs){
-			joueur.deplacementJ(g2);
+			joueur.deplacement(g2);
 		}
 		
 		//affichage des Structures 

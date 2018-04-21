@@ -1,19 +1,17 @@
-package fr.lomateo.main;
+package fr.lomateo.controls;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-import fr.lomateo.personnages.Joueur;
-
 public class Controls implements KeyListener {
-	
-	private final Joueur joueur;
+
+	private final ControllablePersonnage joueur;
 	private final int gauche;
 	private final int droite;
 	private final int saut;
 	private final int coup;
-	
-	public Controls(Joueur joueur, int saut, int gauche, int droite , int coup) {
+
+	public Controls(ControllablePersonnage joueur, int saut, int gauche, int droite, int coup) {
 		this.joueur = joueur;
 		this.gauche = gauche;
 		this.droite = droite;
@@ -21,11 +19,9 @@ public class Controls implements KeyListener {
 		this.coup = coup;
 	}
 
+	// Quand un touche du clavier est utilisé
 	@Override
-	
-	//Quand un touche du clavier est utilisé
-	public void keyPressed(KeyEvent e) { 
-		
+	public void keyPressed(KeyEvent e) {
 		if (e.getKeyCode() == this.saut) {
 			this.joueur.setSaut(true);
 		} else if (e.getKeyCode() == this.gauche) {
@@ -39,12 +35,12 @@ public class Controls implements KeyListener {
 		} else if (e.getKeyCode() == this.coup) {
 			this.joueur.setFrappe(true);
 		}
-		
 	}
+
+	// Quand un touche du clavier est relaché
 	@Override
-	//Quand un touche du clavier est relaché
 	public void keyReleased(KeyEvent e) {
-		
+
 		if (e.getKeyCode() == this.droite) {
 			this.joueur.setMarche(false);
 			this.joueur.setDxJ(0);
@@ -52,11 +48,10 @@ public class Controls implements KeyListener {
 			this.joueur.setMarche(false);
 			this.joueur.setDxJ(0);
 		}
-		
-	}
-	
-	@Override
-	public void keyTyped(KeyEvent e) {	
+
 	}
 
+	@Override
+	public void keyTyped(KeyEvent e) {
+	}
 }
