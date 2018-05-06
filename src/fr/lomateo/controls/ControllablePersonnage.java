@@ -1,4 +1,4 @@
-package controls;
+package fr.lomateo.controls;
 
 public interface ControllablePersonnage {
 
@@ -11,5 +11,7 @@ public interface ControllablePersonnage {
 	void setDxJ(int i);
 
 	void setFrappe(boolean b);
+	
+	void setBloque(boolean b);
 	
 }

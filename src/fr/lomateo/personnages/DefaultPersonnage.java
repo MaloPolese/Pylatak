@@ -2,16 +2,15 @@
 package fr.lomateo.personnages;
 
 
+import fr.lomateo.controls.ControllablePersonnage;
 import fr.lomateo.structures.Structures;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 
-import controls.ControllablePersonnage;
-
 public class DefaultPersonnage implements ControllablePersonnage {
 
 	// variable des personnages
-	private int largeur;
+	protected int largeur;
 	protected int hauteur;
 	protected int x;
 	protected int y;
@@ -19,8 +18,10 @@ public class DefaultPersonnage implements ControllablePersonnage {
 	protected boolean saut;
 	protected boolean chute;
 	protected boolean frappe;
-	protected int compteur, compteurSaut, compteurFrape;
+	protected boolean bloque;
+	protected int compteur , compteurFrape;
 	protected int dxJ;
+	protected int vie;
 
 	protected ImageIcon ico;
 	protected Image image;
@@ -40,9 +41,10 @@ public class DefaultPersonnage implements ControllablePersonnage {
 
 		this.saut = false;
 		this.chute = false;
+		this.bloque = false;
 		this.compteur = 0;
-		this.compteurSaut = 0;
 		this.dxJ = 0;
+		this.vie = 200;
 
 		this.ico = ico;
 		this.image = ico.getImage();
@@ -111,5 +113,13 @@ public class DefaultPersonnage implements ControllablePersonnage {
 	@Override
 	public void setDxJ(int dxJ) {
 		this.dxJ = dxJ;
+	}
+
+	@Override
+	public void setBloque(boolean bloque) {
+		this.bloque = bloque;
+	}
+	public int getVie(){
+		return this.vie;
 	}
 }

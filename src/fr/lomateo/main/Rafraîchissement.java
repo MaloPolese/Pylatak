@@ -1,10 +1,10 @@
 package fr.lomateo.main;
 
 
-public class Chrono extends Thread{
+public class Rafraîchissement extends Thread{
 
 	private final Scene scene;
-	public Chrono(Scene scene){
+	public Rafraîchissement(Scene scene){
 		this.scene = scene;
 	}
 

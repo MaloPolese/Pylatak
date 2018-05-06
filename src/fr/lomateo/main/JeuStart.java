@@ -1,6 +1,6 @@
 package fr.lomateo.main;
 /**
- * @author Malo Polèse
+ * @author Malo Polèse 
  *
  */
 public class JeuStart {
@@ -12,8 +12,9 @@ public class JeuStart {
 		Fenetre fenetre  = new Fenetre(scene);
 		
 		//rafraichissement de l'écran
-		Chrono chrono = new Chrono(scene);
+		Rafraîchissement chrono = new Rafraîchissement(scene);
 		chrono.start();
+		
 		
 		
 	}
