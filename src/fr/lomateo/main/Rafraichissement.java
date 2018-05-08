@@ -1,10 +1,10 @@
 package fr.lomateo.main;
 
 
-public class Rafraîchissement extends Thread{
+public class Rafraichissement extends Thread{
 
 	private final Scene scene;
-	public Rafraîchissement(Scene scene){
+	public Rafraichissement(Scene scene){
 		this.scene = scene;
 	}
 
@@ -21,6 +21,4 @@ public class Rafraîchissement extends Thread{
 		}
 		
 	}
-
-	
 }

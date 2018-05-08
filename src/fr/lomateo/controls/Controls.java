@@ -28,6 +28,7 @@ public class Controls implements KeyListener {
 		if (e.getKeyCode() == this.saut) {
 			this.joueur.setSaut(true);
 		} else if (e.getKeyCode() == this.gauche) {
+			System.out.println("Gauche");
 			this.joueur.setMarche(true);
 			this.joueur.setVersDroite(false);
 			this.joueur.setDxJ(-1);

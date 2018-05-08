@@ -9,7 +9,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 import fr.lomateo.controls.Controls;
-import fr.lomateo.gui.Gui;
+import fr.lomateo.gui.GuiVie;
 import fr.lomateo.personnages.DefaultJoueur;
 import fr.lomateo.structures.GrandePlateformes;
 import fr.lomateo.structures.Mur;
@@ -23,7 +23,7 @@ public class Scene extends JPanel {
 	private final ImageIcon icoFond;
 	private final Image imgFond;
 	
-	private final Gui gui;
+	private final GuiVie gui;
 	
 	public DefaultJoueur joueur1;
 	public DefaultJoueur joueur2;
@@ -50,7 +50,7 @@ public class Scene extends JPanel {
 		this.ysol = 692;// 692
 		this.hauteurPlafond = 0;
 		
-		this.gui = new Gui(this);
+		this.gui = new GuiVie(this);
 
 		// Création des joueurs
 		 joueur1 = new DefaultJoueur(this, 70, 605, "J1", true);
@@ -90,6 +90,9 @@ public class Scene extends JPanel {
 		joueurs = new ArrayList<DefaultJoueur>();
 		this.joueurs.add(joueur1);
 		this.joueurs.add(joueur2);
+		
+		Rafraichissement chrono = new Rafraichissement(this);
+		chrono.start();
 	}
 
 	@Override

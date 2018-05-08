@@ -6,11 +6,11 @@ import java.awt.Graphics2D;
 
 import fr.lomateo.main.Scene;
 
-public class Gui {
+public class GuiVie {
 	
 	Font f = new Font("DejaVu Sans", Font.BOLD, 25);
 	private final Scene scene;
-	public Gui(Scene scene){
+	public GuiVie(Scene scene){
 		this.scene = scene;
 	}
 	
