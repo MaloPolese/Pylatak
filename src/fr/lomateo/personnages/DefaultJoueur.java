@@ -5,7 +5,6 @@ import java.awt.Image;
 
 import javax.swing.ImageIcon;
 
-import fr.lomateo.controls.ControllablePersonnage;
 import fr.lomateo.main.Scene;
 import fr.lomateo.structures.Structures;
 

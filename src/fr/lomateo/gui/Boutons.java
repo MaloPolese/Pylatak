@@ -23,7 +23,6 @@ public class Boutons {
 	}
 
 	public Boutons(int x, int y, int largeur, int hauteur, ImageIcon image) {
-
 		this.x = x;
 		this.y = y;
 		this.largeur = largeur;

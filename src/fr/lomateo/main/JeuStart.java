@@ -1,6 +1,4 @@
-package fr.lomateo.main;
-
-import fr.lomateo.gui.Menu;
+ package fr.lomateo.main;
 
 /**
  * @author Malo Polèse
@@ -8,21 +6,13 @@ import fr.lomateo.gui.Menu;
  */
 public class JeuStart {
 
-	public static Fenetre fenetre;
 
 	public static void main(String[] args) {
 
 		// création de la Fenetre
+		Fenetre fenetre = new Fenetre();
+		
 
-		// Scene scene = new Scene();
-
-		Menu menu = new Menu();
-		fenetre = new Fenetre(menu);
-
-		// rafraichissement de l'écran
-
-		// Rafraîchissement chrono = new Rafraîchissement(scene);
-		// chrono.start();
 
 	}
 
